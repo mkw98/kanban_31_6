@@ -28,3 +28,26 @@ export function addNote(req, res) {
       });
   });
 }
+
+export function deleteNote(req, res) {
+  Note.findOne({ id: req.params.noteId }).exec((err, lane) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+
+    note.remove(() => {
+      res.status(200).end();
+    });
+  });
+}
+
+export function editNote(req, res) {
+  Note.findOne({id: req.params.noteId})
+    .then((note) => {
+      note.task = req.body.task
+      return note.save()
+    })
+    .then(() => {
+      res.json(200).end()
+    })
+}
