@@ -40,7 +40,7 @@ export function deleteLane(req, res) {
   });
 }
 
-export function editLane(req, res) {
+export function updateLane(req, res) {
   Lane.findOne({id: req.params.laneId})
     .then((lane) => {
       lane.name = req.body.name

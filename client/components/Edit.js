@@ -1,5 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import styles from './Edit.css';
+import PropTypes from 'prop-types';
 
 export default class Edit extends Component {
   checkEnter = (e) => {
@@ -40,12 +41,12 @@ export default class Edit extends Component {
   }
   render() {
 
-  return (
-    <div className={this.props.className}>
-      {this.props.editing ? this.renderEdit() : this.renderValue()}
-    </div>
-  );
-}
+    return (
+      <div className={this.props.className}>
+        {this.props.editing ? this.renderEdit() : this.renderValue()}
+      </div>
+    );
+  }
 }
 
 Edit.propTypes = {
