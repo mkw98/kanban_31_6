@@ -9,9 +9,10 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = {
-  ...laneActions,
-  addNote: createNote,
-  createLane: createLaneRequest,
+  editLane,
+  deleteLane,
+  updateLane,
+  addNote: createNoteRequest,
 };
 
 export default connect(
