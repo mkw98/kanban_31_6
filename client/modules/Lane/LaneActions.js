@@ -9,6 +9,18 @@ export const EDIT_LANE = 'EDIT_LANE';
 export const CREATE_LANES = 'CREATE_LANES';
 export const CREATE_NOTES = 'CREATE_NOTES';
 
+export function fetchLanes() {
+  return (dispatch) => {
+    return callApi('lanes').then(res => {
+      const normalized = normalize(res.lanes, lanes);
+      const { lanes: normalizedLanes, notes } = normalized.entities;
+
+     dispatch(createLanes(normalizedLanes));
+     dispatch(createNotes(notes));
+    });
+  };
+}
+
 export function createLane(lane) {
   return {
     type: CREATE_LANE,
@@ -26,6 +38,7 @@ export function createLaneRequest(lane) {
     });
   };
 }
+
 
 export function updateLane(lane) {
   return {
@@ -64,18 +77,6 @@ export function editLane(laneId) {
   };
 }
 
-export function fetchLanes() {
-  return (dispatch) => {
-    return callApi('lanes').then(res => {
-      const normalized = normalize(res.lanes, lanes);
-      const { lanes: normalizedLanes, notes } = normalized.entities;
-
-     dispatch(createLanes(normalizedLanes));
-     dispatch(createNotes(notes));
-    });
-  };
-}
-
 
 export function createLanes(lanesData) {
   return {
@@ -83,6 +84,7 @@ export function createLanes(lanesData) {
     lanes: lanesData,
   };
 }
+
 
 export function createNotes(notesData) {
   return {

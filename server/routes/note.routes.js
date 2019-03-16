@@ -13,6 +13,6 @@ router.route('/notes/:noteId').delete(NoteController.deleteNote);
 router.route('/notes/:noteId').put(NoteController.updateNote);
 
 // edit note 
-router.route('/notes/:noteId').put(NoteController.editNote);
+//router.route('/notes/:noteId').put(NoteController.editNote);
 
 export default router;
