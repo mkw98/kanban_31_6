@@ -8,6 +8,14 @@ export default class Edit extends Component {
       this.finishEdit(e);
     }
   }
+  editLane = (laneId) => {
+    this.renderEdit(laneId);
+  }
+
+  editNote = (noteId) => {
+    this.renderEdit(noteId);
+  }
+  
   finishEdit = (e) => {
     const value = e.target.value;
 

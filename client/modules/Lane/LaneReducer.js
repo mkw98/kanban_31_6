@@ -22,22 +22,45 @@ export default function lanes(state = initialState, action) {
 
      return { ...state, [action.laneId]: newLane };
    }
-   case CREATE_NOTE:
-      return state.map(lane => {
-        if (lane.id === action.laneId) {
-          const notes = [...lane.notes, action.note.id];
-        return { ...lane, notes };
-        }
-      return lane;
-  });
-   case DELETE_NOTE:
-      return state.map(lane => {
-        if (lane.id === action.laneId) {
-          const notes = [...lane.notes];
-          return notes.filter((note) => note.id !== action.noteId);
-        }
-        return lane;
-      });   
+   //case CREATE_NOTE:
+    //  return state.map(lane => {
+    //    if (lane.id === action.laneId) {
+    //      const notes = [...lane.notes, action.note.id];
+    //    return { ...lane, notes };
+    //    }
+    //  return lane;
+  //});
+
+    case CREATE_NOTE:
+      {
+        const newLane = { ...state[action.laneId],
+        };
+        newLane.notes = newLane.notes.concat(action.note.id);
+
+        return { ...state,
+          [action.laneId]: newLane,
+        };
+      }
+
+    case DELETE_NOTE:
+      {
+        const newLane = { ...state[action.laneId],
+        };
+        newLane.notes = newLane.notes.filter(noteId => noteId !== action.noteId);
+
+        return { ...state,
+          [action.laneId]: newLane,
+        };
+      }
+
+   //case DELETE_NOTE:
+    //  return state.map(lane => {
+     //   if (lane.id === action.laneId) {
+      //    const notes = [...lane.notes];
+       //   return notes.filter((note) => note.id !== action.noteId);
+       // }
+       // return lane;
+     // });   
    case DELETE_LANE: {
      return omit(state, action.laneId);
    }
