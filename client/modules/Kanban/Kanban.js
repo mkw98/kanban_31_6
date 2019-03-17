@@ -5,6 +5,7 @@ import Lanes from '../Lane/Lanes';
 import styles from '../Lane/Lane.css';
 //import { createLane } from '../Lane/LaneActions';
 import { createLaneRequest, fetchLanes } from '../Lane/LaneActions';
+import { createNote } from '../Note/NoteActions';
 
 const Kanban = (props) => (
   <div>
@@ -30,7 +31,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  ...laneActions,
+  //...laneActions, wyskakuje bład
   addNote: createNote,
   createLane: createLaneRequest,
 };

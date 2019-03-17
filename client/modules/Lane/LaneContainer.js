@@ -14,7 +14,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = {
   ...laneActions,
-  addNote: createNote,
+  deleteLane: deleteLaneRequest,
+  updateLane: updateLaneRequest,
+  addNote: createNoteRequest,
   createLane: createLaneRequest,
 };
 
